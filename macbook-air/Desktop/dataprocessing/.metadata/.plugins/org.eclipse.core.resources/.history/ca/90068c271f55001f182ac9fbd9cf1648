@@ -1,0 +1,17 @@
+package com.betsi.dataprocessor;
+
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DataItemRepository extends JpaRepository <DataItem, Long>{
+	DataItem getDataById(Long id);
+	    List<DataItem> getAllData();
+	    DataItem saveData(DataItem dataRecord);
+	    void deleteData(Long id);
+	
+	
+	
+
+}

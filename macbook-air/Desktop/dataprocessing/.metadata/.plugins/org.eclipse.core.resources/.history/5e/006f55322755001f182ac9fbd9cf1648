@@ -1,0 +1,13 @@
+@Entity
+@Table(name = "contracts")
+public class Contract {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String title;
+    private String description;
+    // Add other fields...
+
+    // Getters and Setters
+}

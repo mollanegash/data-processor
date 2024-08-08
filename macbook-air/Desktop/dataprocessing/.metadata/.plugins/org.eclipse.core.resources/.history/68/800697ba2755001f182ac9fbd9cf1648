@@ -1,0 +1,13 @@
+@Repository
+public interface ContractRepository extends JpaRepository<Contract, Long> {
+
+    @Query("SELECT c FROM Contract c WHERE c.title LIKE %:keyword%")
+    List<Contract> searchByTitle(@Param("keyword") String keyword);
+
+    @Query("SELECT c FROM Contract c WHERE c.primaryNaics = :naics")
+    List<Contract> filterByNaics(@Param("naics") String naics);
+
+    List<Contract> findAllByOrderByTitleAsc();  // Sorting by title in ascending order
+
+    List<Contract> findAllByOrderByTitleDesc();  // Sorting by title in descending order
+}
