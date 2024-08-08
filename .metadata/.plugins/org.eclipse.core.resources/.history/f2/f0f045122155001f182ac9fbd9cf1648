@@ -1,0 +1,32 @@
+package com.betsi.dataprocessor;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class DataItemService implements DataItemRepository {
+
+	    @Autowired
+	    private DataRepository dataRepository;
+
+	    @Override
+	    public DataRecord getDataById(Long id) {
+	        return dataRepository.findById(id).orElse(null);
+	    }
+
+	    @Override
+	    public List<DataRecord> getAllData() {
+	        return dataRepository.findAll();
+	    }
+
+	    @Override
+	    public DataRecord saveData(DataRecord dataRecord) {
+	        return dataRepository.save(dataRecord);
+	    }
+
+	    @Override
+	    public void deleteData(Long id) {
+	        dataRepository.deleteById(id);
+	    }
+	}
+
+}

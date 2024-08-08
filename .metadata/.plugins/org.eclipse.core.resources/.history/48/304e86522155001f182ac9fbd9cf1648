@@ -1,0 +1,34 @@
+package com.betsi.dataprocessor;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class DataItemService implements DataService {
+
+	@Override
+	public DataItem getDataById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<DataItem> getAllData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DataItem saveData(DataItem dataItem) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteData(Long id) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

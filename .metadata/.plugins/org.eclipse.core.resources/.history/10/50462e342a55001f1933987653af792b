@@ -1,0 +1,50 @@
+function ContractList() {
+  const [contracts, setContracts] = useState([]);
+  const [keyword, setKeyword] = useState('');
+  const [naics, setNaics] = useState('');
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  useEffect(() => {
+    fetchContracts();
+  }, [keyword, naics, sortOrder]);
+
+  const fetchContracts = () => {
+    let url = 'http://localhost:8080/api/contracts';
+    if (keyword) url += `?keyword=${keyword}`;
+    if (naics) url += `&naics=${naics}`;
+    if (sortOrder) url += `&sortOrder=${sortOrder}`;
+
+    axios.get(url)
+      .then(response => setContracts(response.data))
+      .catch(error => console.error('Error fetching contracts:', error));
+  };
+
+  return (
+    <div>
+      <h1>Contracts</h1>
+      <input
+        type="text"
+        placeholder="Search by title"
+        value={keyword}
+        onChange={e => setKeyword(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Filter by NAICS"
+        value={naics}
+        onChange={e => setNaics(e.target.value)}
+      />
+      <select onChange={e => setSortOrder(e.target.value)} value={sortOrder}>
+        <option value="asc">Sort Ascending</option>
+        <option value="desc">Sort Descending</option>
+      </select>
+      <ul>
+        {contracts.map(contract => (
+          <li key={contract.id}>{contract.title} - {contract.description}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default ContractList;

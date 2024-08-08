@@ -1,0 +1,30 @@
+package com.betsi.dataprocessor;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/contracts")
+public class ContractController {
+
+    @Autowired
+    private ContractService contractService;
+
+    @GetMapping("/search")
+    public List<Contract> searchContracts(@RequestParam String keyword) {
+        return contractService.searchContracts(keyword);
+    }
+
+    @GetMapping("/filter")
+    public List<Contract> filterContracts(@RequestParam String naics) {
+        return contractService.filterContractsByNaics(naics);
+    }
+
+    @GetMapping("/sort")
+    public List<Contract> getSortedContracts(@RequestParam String sortOrder) {
+        return contractService.getSortedContracts(sortOrder);
+    }
+}
