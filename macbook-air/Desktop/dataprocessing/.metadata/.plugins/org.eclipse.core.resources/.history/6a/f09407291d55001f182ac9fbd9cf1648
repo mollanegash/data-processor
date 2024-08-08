@@ -1,5 +1,0 @@
-package com.betsi.dataprocessor;
-
-public interface ModelRepository {
-
-}

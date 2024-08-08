@@ -1,5 +1,0 @@
-INDEX VERSION 1.4+/Users/macbook/macbook-air/Desktop/dataprocessing/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-142728780.index
-4160096932.index
-3492282391.index
-3044327080.index
